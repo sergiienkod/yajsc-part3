@@ -1,0 +1,25 @@
+{
+  "name": "yajsc-part3",
+  "version": "1.0.0",
+  "description": "Test repository for YAJSC Part-3",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiienkod/yajsc-part3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sergiienkod/yajsc-part3/issues"
+  },
+  "homepage": "https://github.com/sergiienkod/yajsc-part3#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.2"
+  }
+}
