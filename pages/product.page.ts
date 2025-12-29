@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class ProductPage {
   page: Page;
@@ -14,14 +14,4 @@ export class ProductPage {
         this.addToCart = this.page.getByTestId('add-to-cart');
         this.addToFavorites = this.page.getByTestId('add-to-favorites');
     }
-  
-   async verifyProductDetails(expectedName: string, expectedPrice: string): Promise<void> {
-        await expect(this.page).toHaveURL(/\/product/);
-        await expect(this.productName).toHaveText(expectedName);
-        await expect(this.unitPrice).toHaveText(expectedPrice);
-        await expect(this.addToCart).toBeVisible();
-        await expect(this.addToFavorites).toBeVisible();
-    }
-
-
 }

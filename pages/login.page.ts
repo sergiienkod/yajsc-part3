@@ -17,10 +17,10 @@ export class LoginPage {
         await this.page.goto('/auth/login');
     }
    
-    async  performLogin(email:string, password:string): Promise<void> {
-    await this.emailField.fill(email);
-    await this.passwordField.fill(password);
-    await this.submitButton.click();
+    async  performLogin(email: string, password: string): Promise<void> {
+        await this.emailField.fill(email);
+        await this.passwordField.fill(password);
+        await this.submitButton.click();
    }
       
 }

@@ -1,10 +1,12 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class HomePage {
-    page:Page;
+    page: Page;
+    productName: Locator;
     
     constructor(page:Page) {
         this.page=page;
+        this.productName = this.page.getByTestId('product-name');
         }
 
     async open(): Promise<void> {
@@ -12,7 +14,7 @@ export class HomePage {
     }
 
     async clickProduct(productName: string): Promise<void> {
-    await this.page.getByTestId('product-name').getByText(productName).click();
+    await this.productName.getByText(productName).click();
   }
     
 }
