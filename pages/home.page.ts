@@ -39,7 +39,7 @@ export class HomePage {
           title,
           price: Number(pricesText[index].replace('$', '')),
     }));
-}
+    }
 
     async getProductDetailsByTitle(productTitle: string): Promise<{ title: string; price: number } | undefined> {
         const allProducts = await this.getProductsDetails();
@@ -47,16 +47,11 @@ export class HomePage {
     }
 
     async getVisibleProductTitles(): Promise<string[]> {
-        const productNames = this.page.getByTestId('product-name');
-        const count = await productNames.count();
-        const titles: string[] = [];
+        return (await this.productName.allTextContents()).map(t => t.trim());
+    }
 
-        for (let i = 0; i < count; i++) {
-            const title = (await productNames.nth(i).textContent() || '').trim();
-            const visible = await productNames.nth(i).isVisible();
-            if (visible) titles.push(title);
-        }
 
-        return titles;
+    async waitForSanderProducts(): Promise<void> {
+        await this.page.locator('.card >> text=Sander').first().waitFor({ state: 'visible' });
     }
 }

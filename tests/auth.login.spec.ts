@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/login.page';
 import { AccountPage } from '../pages/account.page';
 import path from 'path';
 
-const authFile = path.join(__dirname, '../playwright/.auth/user.json');
+export const authFile = path.join(__dirname, '../playwright/.auth/user.json');
 const ACCOUNT_NAME = 'Jane Doe';
 const EMAIL = 'customer@practicesoftwaretesting.com';
 const PASSWORD = 'welcome01';
