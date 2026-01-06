@@ -50,8 +50,7 @@ export class HomePage {
         return (await this.productName.allTextContents()).map(t => t.trim());
     }
 
-
-    async waitForSanderProducts(): Promise<void> {
-        await this.page.locator('.card >> text=Sander').first().waitFor({ state: 'visible' });
+    async waitForProduct(productName: string): Promise<void> {
+        await this.page.locator(`.card >> text=${productName}`).first().waitFor({ state: 'visible' });
     }
 }

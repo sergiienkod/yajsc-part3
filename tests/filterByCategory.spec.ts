@@ -10,7 +10,7 @@ test('Filter products by category Sander', async ({ page }) => {
     await homePage.open();
     await homePage.selectCategory(Category.SANDER);
 
-    await homePage.waitForSanderProducts();
+    await homePage.waitForProduct('Sander');
 
     const titles = await homePage.getVisibleProductTitles();
     titles.forEach(title => expect(title).toContain('Sander'));
