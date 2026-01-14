@@ -53,4 +53,15 @@ export class HomePage {
     async waitForProduct(productName: string): Promise<void> {
         await this.page.locator(`.card >> text=${productName}`).first().waitFor({ state: 'visible' });
     }
+
+    async getFirstProductTitle(): Promise<string> {
+        const title = await this.productName.first().textContent();
+
+        if (!title) {
+          throw new Error('No products found on Home page');
+        }
+        
+        return title.trim();
+    }
+
 }
