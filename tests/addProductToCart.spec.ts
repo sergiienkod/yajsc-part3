@@ -21,7 +21,7 @@ test('Verify user can add product to cart', async ({ page }) => {
   await expect(page).toHaveURL(/\/product/);
   await expect(productPage.productName).toHaveText(productName);
   await expect(productPage.unitPrice).toHaveText(productPrice);
-  await productPage.addToCart.click();
+  await productPage.addToCartButton.click();
   await expect(productPage.toast).toBeVisible();
   await expect(productPage.toast).toContainText('Product added to shopping cart');
   await expect(productPage.toast).toBeHidden({ timeout: 8000 });
@@ -31,5 +31,5 @@ test('Verify user can add product to cart', async ({ page }) => {
   await expect(page).toHaveURL(/\/checkout/);
   await expect(checkOutPage.productQuantity).toHaveValue(productQuantity);
   await expect(checkOutPage.productTitle).toHaveText(productName);
-  await expect(checkOutPage.proceedToCheckout).toBeVisible();
+  await expect(checkOutPage.proceedToCheckoutButton).toBeVisible();
 });

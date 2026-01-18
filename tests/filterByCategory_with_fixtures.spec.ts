@@ -1,5 +1,5 @@
 import { Category } from '../pages/enums';
-import { expect, test } from '../app.fixtures';
+import { expect, test } from './app.fixtures';
 
 test('Filter products by category Sander', async ({ allPages }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');

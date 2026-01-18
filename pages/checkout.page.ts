@@ -1,5 +1,6 @@
 import { Locator, Page } from "@playwright/test";
-
+import { getExpirationDatePlusMonths } from "../utils/dateUtils"
+import { CreditCardData } from '../types/creditCard';
 export class CheckoutPage {
   page: Page;
   productTitle: Locator;
@@ -48,21 +49,15 @@ export class CheckoutPage {
     }
 
   async getProductTitle(): Promise<string> {
-    const title = await this.productTitle.textContent();
-    if (!title) throw new Error('Product title not found in checkout');
-    return title.trim();
+    return (await this.productTitle.textContent())!.trim();
   }
 
   async getProductPrice(): Promise<number> {
-    const priceText = await this.productPrice.textContent();
-    if (!priceText) throw new Error('Product price not found');
-    return Number(priceText.replace('$', ''));
+    return Number((await this.productPrice.textContent())!.replace('$', ''));
   }
 
   async getTotalPrice(): Promise<number> {
-    const totalText = await this.totalPrice.textContent();
-    if (!totalText) throw new Error('Total price not found');
-    return Number(totalText.replace('$', ''));
+    return Number((await this.totalPrice.textContent())!.replace('$', ''));
   }
 
   async proceedToBilling(): Promise<void> {
@@ -87,27 +82,15 @@ export class CheckoutPage {
 
     await this.proceedToPaymentButton.click();
   }
-
-  getExpirationDatePlusMonths(months: number): string {
-    const today = new Date();
-    const expMonth = today.getMonth() + 1 + months;
-    const expYear = today.getFullYear() + Math.floor(expMonth / 12);
-    const month = ((expMonth - 1) % 12) + 1;
-    const monthStr = month.toString().padStart(2, '0');
-    return `${monthStr}/${expYear}`;
-  }
   
-  async payWithCreditCard(cardHolder: string = 'Test User'): Promise<void> {
-  
-    await this.paymentTypeDropdown.selectOption({ label: 'Credit Card' });
-
-    await this.cardNumber.fill('1111-1111-1111-1111');
-    await this.expirationDate.fill(this.getExpirationDatePlusMonths(3));
-    await this.cvv.fill('111');
-    await this.cardHolderName.fill(cardHolder);
-
-    await this.confirmPaymentButton.click();
-  }
+  async payWithCreditCard(card: CreditCardData): Promise<void> {
+  await this.paymentTypeDropdown.selectOption({ label: 'Credit Card' });
+  await this.cardNumber.fill(card.cardNumber);
+  await this.expirationDate.fill(card.expiration);
+  await this.cvv.fill(card.cvv);
+  await this.cardHolderName.fill(card.holder);
+  await this.confirmPaymentButton.click();
+}
   
   async waitForPaymentSuccess(): Promise<void> {
     await this.paymentSuccessMessage.waitFor({ state: 'visible' });

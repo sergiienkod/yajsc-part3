@@ -11,7 +11,7 @@ export class HomePage {
         this.productName = this.page.getByTestId('product-name');
         this.sortDropdown = this.page.getByTestId('sort');
         this.productCards = this.page.locator('.card');
-        }
+    }
 
     async open(): Promise<void> {
         await this.page.goto('/');
@@ -56,12 +56,7 @@ export class HomePage {
 
     async getFirstProductTitle(): Promise<string> {
         const title = await this.productName.first().textContent();
-
-        if (!title) {
-          throw new Error('No products found on Home page');
-        }
-        
-        return title.trim();
+        return title!.trim();
     }
 
 }

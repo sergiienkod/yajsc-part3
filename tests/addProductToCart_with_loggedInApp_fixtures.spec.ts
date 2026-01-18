@@ -1,4 +1,5 @@
-import { test, expect } from '../loggedInApp.fixtures';
+import { test, expect } from './loggedInApp.fixtures';
+import { TEST_CARD } from '../data/creditCard';
 
 test('User can complete checkout with credit card', async ({ loggedInApp }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
@@ -12,7 +13,7 @@ test('User can complete checkout with credit card', async ({ loggedInApp }) => {
   await loggedInApp.productPage.addToCart();
 
 
-  await loggedInApp.headerFragment.clickCart();
+  await loggedInApp.productPage.header.clickCart();
 
   expect(await loggedInApp.checkOutPage.getProductTitle()).toBe(productTitle);
 
@@ -28,8 +29,7 @@ test('User can complete checkout with credit card', async ({ loggedInApp }) => {
     'Vienna'
   );
 
-  
-  await loggedInApp.checkOutPage.payWithCreditCard('Jane Doe');
+  await loggedInApp.checkOutPage.payWithCreditCard(TEST_CARD);
 
   await loggedInApp.checkOutPage.waitForPaymentSuccess();
 

@@ -1,5 +1,8 @@
 import { test as base } from './app.fixtures';
-import { AllPages } from './pages/allPages';
+import { AllPages } from '../pages/allPages';
+import { TEST_USER } from './testUser';
+
+const { email, password } = TEST_USER;
 
 
 type LoggedInFixtures = {
@@ -9,11 +12,9 @@ type LoggedInFixtures = {
 export const test = base.extend<LoggedInFixtures>({
   
   loggedInApp: async ({ allPages }, use) => {
-    const EMAIL = 'customer@practicesoftwaretesting.com';
-    const PASSWORD = 'welcome01';
     
     await allPages.loginPage.goToLoginPage();
-    await allPages.loginPage.performLogin(EMAIL, PASSWORD);
+    await allPages.loginPage.performLogin(email, password);
 
     await allPages.accountPage.waitUntilOpened();
     

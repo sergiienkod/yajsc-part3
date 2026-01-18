@@ -24,18 +24,12 @@ export class ProductPage {
   
   async getProductTitle(): Promise<string> {
     const title = await this.productName.textContent();
-    if (!title) {
-      throw new Error('Product title is not available');
-    }
-    return title.trim();
+    return title!.trim();
   }
 
   async getProductPrice(): Promise<number> {
     const priceText = await this.unitPrice.textContent();
-    if (!priceText) {
-      throw new Error('Product price is not available');
-    }
-    return Number(priceText.replace('$', ''));
+    return Number(priceText!.replace('$', ''));
   }  
 
   async addToCart(): Promise<void> {

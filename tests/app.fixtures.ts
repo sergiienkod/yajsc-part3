@@ -1,6 +1,5 @@
 import { test as base } from '@playwright/test';
-import { AllPages } from './pages/allPages';
-
+import { AllPages } from '../pages/allPages';
 
 type AppFixtures = {
   allPages: AllPages;
