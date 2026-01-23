@@ -11,6 +11,10 @@ export class AccountPage {
     this.accountName = this.page.getByTestId('nav-menu');
   }
 
+  async waitUntilOpened() {
+    await this.page.waitForURL('**/account');
+  }
+
   getPageTitle(): Locator {
   return this.pageTitle;
   }

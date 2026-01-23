@@ -11,7 +11,7 @@ export class HomePage {
         this.productName = this.page.getByTestId('product-name');
         this.sortDropdown = this.page.getByTestId('sort');
         this.productCards = this.page.locator('.card');
-        }
+    }
 
     async open(): Promise<void> {
         await this.page.goto('/');
@@ -53,4 +53,10 @@ export class HomePage {
     async waitForProduct(productName: string): Promise<void> {
         await this.page.locator(`.card >> text=${productName}`).first().waitFor({ state: 'visible' });
     }
+
+    async getFirstProductTitle(): Promise<string> {
+        const title = await this.productName.first().textContent();
+        return title!.trim();
+    }
+
 }
