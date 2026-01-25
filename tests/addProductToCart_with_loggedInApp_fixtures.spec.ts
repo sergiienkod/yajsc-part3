@@ -1,5 +1,5 @@
-import { test, expect } from './loggedInApp.fixtures';
-import { TEST_CARD } from '../data/creditCard';
+import { test, expect } from '../fixtures/loggedInApp.fixtures';
+import { TEST_CARD } from '../testData/creditCard';
 
 test('User can complete checkout with credit card', async ({ loggedInApp }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');

@@ -1,4 +1,4 @@
-import { expect, test } from './app.fixtures';
+import { expect, test } from '../fixtures/app.fixtures';
 
 
 test('Verify user can view product details', async ({ allPages, page }) => {

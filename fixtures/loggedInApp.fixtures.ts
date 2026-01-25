@@ -1,6 +1,6 @@
 import { test as base } from './app.fixtures';
 import { AllPages } from '../pages/allPages';
-import { TEST_USER } from './testUser';
+import { TEST_USER } from '../testData/testUser';
 
 const { email, password } = TEST_USER;
 

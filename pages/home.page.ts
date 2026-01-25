@@ -59,4 +59,8 @@ export class HomePage {
         return title!.trim();
     }
 
+    async getProductsCount(): Promise<number> {
+        return this.productCards.count();
+    }
+
 }
