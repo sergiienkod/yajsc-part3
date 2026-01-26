@@ -1,4 +1,4 @@
-import { expect, test } from './loggedInApp.fixtures';
+import { expect, test } from '../fixtures/loggedInApp.fixtures';
 
 const ACCOUNT_NAME = 'Jane Doe';
 

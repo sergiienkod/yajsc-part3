@@ -1,4 +1,4 @@
-import { expect, test } from './app.fixtures';
+import { expect, test } from '../fixtures/app.fixtures';
 
 test('Verify user can add product to cart with allPages fixture', async ({ allPages, page }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
