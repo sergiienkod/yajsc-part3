@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/loggedInApp.fixtures';
 import { TEST_CARD } from '../testData/creditCard';
 
-test('User can complete checkout with credit card', async ({ loggedInApp }) => {
+test('C102 User can complete checkout with credit card', { tag: '@regression' }, async ({ loggedInApp }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
 
   await loggedInApp.homePage.open();

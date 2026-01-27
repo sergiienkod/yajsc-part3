@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "lint": "npx eslint . --fix"
+    "lint": "npx eslint . --fix",
+    "test:smoke": "npx playwright test --project=smoke",
+    "test:regression": "npx playwright test --project=regression"
   },
   "repository": {
     "type": "git",
@@ -23,10 +25,14 @@
     "@eslint/js": "^9.39.2",
     "@faker-js/faker": "^10.2.0",
     "@playwright/test": "^1.57.0",
+    "@testomatio/reporter": "^2.6.0",
     "@types/node": "^25.0.2",
     "eslint": "^9.39.2",
     "eslint-plugin-playwright": "^2.4.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.50.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }

@@ -1,7 +1,7 @@
 import { expect, test } from '../fixtures/app.fixtures';
 
 
-test('Verify user can view product details', async ({ allPages, page }) => {
+test('C112 Verify user can view product details', { tag: '@regression' }, async ({ allPages, page }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
   
   const product = {
