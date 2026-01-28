@@ -8,7 +8,7 @@ const nameSortCases = [
 ];
 
 nameSortCases.forEach(sortOption => {
-  test(`Verify sorting by name: ${sortOption}`, async ({ page }) => {
+  test(`C114 Verify sorting by name: ${sortOption}`, { tag: '@regression' }, async ({ page }) => {
     test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
     
     const homePage = new HomePage(page);

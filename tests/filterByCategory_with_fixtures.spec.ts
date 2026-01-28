@@ -1,7 +1,7 @@
 import { Category } from '../pages/enums';
 import { expect, test } from '../fixtures/app.fixtures';
 
-test('Filter products by category Sander', async ({ allPages }) => {
+test('C107 Filter products by category Sander', { tag: '@regression' }, async ({ allPages }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
 
     await allPages.homePage.open();

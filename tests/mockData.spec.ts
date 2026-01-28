@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/app.fixtures';
 import { generateFakeProducts } from '../testData/mockProducts';
 
-test('User sees 20 products when products API is mocked', async ({ allPages, page }) => {
+test('C111 User sees 20 products when products API is mocked', { tag: '@regression' }, async ({ allPages, page }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
 
   const products = generateFakeProducts(20);

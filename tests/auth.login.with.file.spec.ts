@@ -3,7 +3,7 @@ import { authFilePath } from '../pages/authFilePath';
 
 test.use({ storageState: process.env.CI ? undefined : authFilePath });
 
-test('Verify login with valid credentials', async ({ page }) => {
+test('C106 Verify login with valid credentials', { tag: '@regression' }, async ({ page }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
   
   await page.goto('/account');

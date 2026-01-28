@@ -8,7 +8,7 @@ const priceSortCases = [
 ];
 
 priceSortCases.forEach(sortOption => {
-  test(`Verify sorting by price: ${sortOption}`, async ({ page }) => {
+  test(`C115 Verify sorting by price: ${sortOption}`, { tag: '@regression' }, async ({ page }) => {
     test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
   
     const homePage = new HomePage(page);

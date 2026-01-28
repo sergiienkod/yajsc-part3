@@ -7,7 +7,7 @@ const ACCOUNT_NAME = 'Jane Doe';
 const EMAIL = 'customer@practicesoftwaretesting.com';
 const PASSWORD = 'welcome01';
 
-test('Verify login with valid credentials', async ({ page }) => {
+test('C105 Verify login with valid credentials', { tag: '@regression' }, async ({ page }) => {
   test.skip(!!process.env.CI, 'Skipped in CI due to Cloudflare');
   
   const loginPage = new LoginPage(page);
